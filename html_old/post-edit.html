@@ -1,0 +1,14 @@
+<div class="panel">
+    <form action="/admin/post-edited" method="post">
+        <div>Name: <textarea name="name" rows="1" cols="30">{{.Name}}</textarea></div>
+        <div>Title: <textarea name="title" rows="1" cols="30">{{.Title}}</textarea></div>
+        <div>Pic: <textarea name="date" rows="1" cols="30">{{.Pic}}</textarea></div>
+        <div>Location: <textarea name="location" rows="1" cols="30">{{.Location}}</textarea></div>
+        <div>Date: <textarea name="location" rows="1" cols="30">{{.Date}}</textarea></div>
+        <div>Content: <textarea name="content" rows="30" cols="60">{{.Post}}</textarea></div>
+        <div><input type="submit" value="Submit"></div>
+    </form>
+    <form action="/admin/delete/{{.Name}}" method="post">
+        <div><input type="submit" value="Delete"></div>
+    </form>
+</div>

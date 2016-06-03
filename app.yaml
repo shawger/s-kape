@@ -1,0 +1,36 @@
+runtime: python27
+api_version: 1
+threadsafe: true
+
+handlers:
+  
+- url: /style
+  static_dir: style
+
+- url: /javascript
+  static_dir: javascript
+  
+- url: /img
+  static_dir: img
+  
+- url: /fonts
+  static_dir: fonts
+  
+- url: /admin/.*
+  script: admin.app
+  login: admin
+  
+- url: /admin
+  script: admin.app
+  login: admin
+  
+- url: /.*
+  script: s-kape.app
+
+
+  
+libraries:
+- name: webapp2
+  version: latest
+- name: jinja2
+  version: latest

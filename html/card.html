@@ -1,0 +1,33 @@
+<style>
+        #{{name}} .card-pic{
+                background: linear-gradient({{ colorOverlay }},{{ colorOverlay }}),url("{{ picURL }}");
+                background-size: cover;
+        }
+        #{{name}}:hover .card-pic{
+                background: linear-gradient({{ colorOverlayDark }},{{ colorOverlayDark }}),url("{{ picURL }}");
+                background-size: cover;
+        }
+        #{{name}}.card .card-content{
+                background-color: "white";
+        }
+        #{{name}}.card:hover .card-content{
+                background-color: {{ backgroundColorDark }};
+        }
+
+</style>
+
+<div class="col-sm-4">
+        <a style="display:block" {{ url }}>
+        <div class="card {{cardClass}}" id ="{{ name }}">
+                <div class='card-pic'>
+                        <div class='card-title'>{{ title }}</div>
+                </div>
+                <div class='card-content'>
+                        {{ info }}
+                </div>
+                <div class="admin">
+                        {{ admin }}
+                </div>
+        </div>
+        </a>
+</div>

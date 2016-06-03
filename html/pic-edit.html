@@ -1,0 +1,55 @@
+<div class ="pic-form">
+<blockquote id="msg"></blockquote></div>
+<form class="form-horizontal post-form" role="form">
+    
+    <img id="img" src="{{ pic.URL }}" alt="{{ pic.title }}">
+    
+    <div class="post-info-edit col-sm-12"">
+        <div class="form-group col-sm-6">
+                <input type="text" class="form-control" id="name" value="{{ pic.name }}" placeholder="Name">
+        </div>
+        <div class="form-group col-sm-6"">
+                <input type="text" class="form-control" id="title" value="{{ pic.title }}" placeholder="Title">
+        </div>
+        <div class="form-group col-sm-12"">
+                <label>Auto-fill URLs <input type="checkbox" id="autofill" value="" checked></label>
+        </div>
+        <div class="form-group col-sm-6"">
+                <input type="text" class="form-control" id="url" value="{{ pic.URL }}" placeholder="URL">
+        </div>
+        
+        <div class="form-group col-sm-6"">
+                <input type="text" class="form-control" id="largeURL" value="{{ pic.largeURL }}" placeholder="Large URL">
+        </div>
+        <div class="form-group col-sm-6"">
+                <input type="text" class="form-control" id="xLargeURL" value="{{ pic.xLargeURL }}" placeholder="xLargeURL">
+        </div>
+        <div class="form-group col-sm-6"">
+                <input type="text" class="form-control" id="lowQualityURL" value="{{ pic.lowQualityURL }}" placeholder="lowQualityURL">
+        </div>
+        <div class="form-group col-sm-6"">
+                <input type="text" class="form-control" id="smallURL" value="{{ pic.smallURL }}" placeholder="smallURL">
+        </div>
+        <div class="form-group col-sm-6"">
+                <input type="text" class="form-control" id="thumbURL" value="{{ pic.thumbURL }}" placeholder="thumbURL">
+        </div>
+        
+        <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="date" value="{{ pic.dateString }}" placeholder="Date (YYYY-MM-DD)">
+        </div>
+        <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="location" value="{{ pic.location }}"" placeholder="Location">
+        </div>
+        <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="activity" value="{{ pic.activity }}" placeholder="Activity">
+        </div>
+
+        <div class="form-group col-sm-12">
+                <textarea class="form-control post-content-edit" rows="1" id="comment" placeholder="Comment">{{ pic.comment }}</textarea>
+        </div>
+    </div>
+    
+</form>
+</div>
+
+<script src="/javascript/pic-edit.js"></script>

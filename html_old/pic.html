@@ -1,0 +1,24 @@
+<!-- Template for a standard picture (with a title) -->
+<div class='col-sm-6 panel-pic' id='{{.Name}}'>
+    <div class='panel nopadding'>
+        <div class="panel-header">
+            <div class="panel-image nopadding">
+                <img src='{{.ShortURL}}' class = 'img-responsive' alt-text='{{.Title}}'  style='width:100%;'>
+            </div>
+            <div class="panel-title">
+                {{.Title}}
+            </div>
+        </div>
+        
+        <!-- These should always be hidden, this is mostly for loading additional data for
+             use by the page. -->
+        <div class="panel-info">
+            <div class='pic-url'>{{.URL}}</div>
+            <div class='pic-date'>{{.Date}}</div>
+            <div class='pic-location'>{{.Location}}</div>
+            <div class='pic-activity'>{{.Activity}}</div>
+            <div class='pic-comment'>{{.Comment}}</div>
+            <div class='pic-index'></div>
+        </div>
+    </div>
+</div>

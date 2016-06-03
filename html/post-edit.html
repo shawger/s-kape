@@ -1,0 +1,42 @@
+
+<div class ="post-form">
+<blockquote id="msg"></blockquote></div>
+<form class="form-horizontal post-form" role="form">
+    
+    <div class="post-info-edit col-sm-12"">
+        <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="name" value="{{ post.name }}" placeholder="Name">
+        </div>
+        <div class="form-group col-sm-4"">
+                <input type="text" class="form-control" id="title" value="{{ post.title }}" placeholder="Title">
+        </div>
+        <div class="form-group col-sm-4">
+                <input type="text" class="form-control" id="date" value="{{ post.dateString }}" placeholder="Date (YYYY-MM-DD)">
+        </div>
+        <div class="form-group col-sm-3">
+                <input type="text" class="form-control" id="pic" value="{{ post.pic }}" placeholder="Pic">
+        </div>
+        <div class="form-group col-sm-3">
+                <input type="text" class="form-control" id="color" value="{{ post.color }}" placeholder="Color">
+        </div>
+        <div class="form-group col-sm-3">
+                <input type="text" class="form-control" id="location" value="{{ post.location }}"" placeholder="Location">
+        </div>
+        <div class="form-group col-sm-3">
+                <input type="text" class="form-control" id="activity" value="{{ post.activity }}" placeholder="Activity">
+        </div>
+
+        <div class="form-group col-sm-12">
+                <textarea class="form-control post-content-edit" rows="1" id="comment" placeholder="Comment">{{ post.comment }}</textarea>
+        </div>
+    </div>
+    
+    <div class="col-sm-12">
+        <textarea class="form-control post-content-edit"  id="content" placeholder="Write some stuff">{{ post.content }}</textarea>
+    </div>
+    
+</form>
+</div>
+
+<script src="/javascript/autogrow.js"></script>
+<script src="/javascript/post-edit.js"></script>

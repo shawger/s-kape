@@ -1,0 +1,35 @@
+@import url(http://fonts.googleapis.com/css?family=Lekton);
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text);
+
+body {
+	background-color: white;
+	font-family: 'crimson text'
+}
+.panel > .panel-footer {
+	border:0px;
+	padding: 0px;
+	background-color: rgb(242, 243, 243);
+}
+
+.panel > .panel-image {
+	padding: 0px;
+}
+
+.panel {
+	border:4px;
+	overflow: hidden;
+	box-shadow: rgb(12, 13, 13) 0px 5px 25px;
+}
+
+.panel-fullscreen {
+	width:95%;
+	max-width:1440px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top:10px;
+	max-width:120vh;
+}
+
+.panel-fullscreen > .panel-footer > .navbar {
+	margin-bottom: 0px;
+}

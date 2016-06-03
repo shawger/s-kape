@@ -1,0 +1,46 @@
+<!-- Template for picture page (expected a header and footer is already also loaded. Pics will be loaded with ajax-->
+
+<!-- Search panel-->
+<div class='panel collapse' id='search'>
+    <div class='row'>
+        <div class='col-md-3'><input type='text' placeholder='Name' id='name-search'></div>
+        <div class='col-md-3'><input type='text' placeholder='Title' id='title-search'></div>
+        <div class='col-md-3'><input type='text' placeholder='Location' id='location-search'></div>
+        <div class='col-md-3'><input type='text' placeholder='Activity' id='activity-search'></div>
+    </div>
+</div>
+
+<!-- Place for all the pictures to go. Empty to start. Filled with ajax-->
+<div id='pics'></div>
+
+<!-- Overlay for when a pic is clicked on. Hidden and empty on load, controlled by jquery scripts-->
+<div class='overlay overlay-data'>
+    <div class="panel panel-fullscreen nopadding">
+        <div class="panel-header">
+            <div class="panel-image">
+                <img src="" class="img-responsive" id="overlay-img" alt-text="empty">
+            </div>
+            <div id="panel-left">
+                <
+            </div>
+            <div id="panel-right">
+                >
+            </div>
+
+        </div>
+        <div class="panel-info" id="panel-info">
+            <div class="row">
+                <div class='col-sm-4' id="pic-date"></div>
+                <div class='col-sm-4' id="pic-location"></div>
+                <div class='col-sm-4' id="pic-activity"></div>
+            </div>
+            <div class="row panel-text" id='pic-comment'>
+            </div>
+        </div>
+    </div>
+    <div id = 'pic-id'>
+    </div>
+</div>
+
+<!-- All the fun jscript on the pics page -->
+<script src='/js/pics.js'></script>

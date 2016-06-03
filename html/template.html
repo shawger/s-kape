@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title> {{title}} </title>
+
+    <!-- Bootstrap -->
+    <link href="/style/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- s-kape style -->
+    <link rel="stylesheet" type="text/css" href="/style/s-kape.css">
+    
+    <link rel="stylesheet" type="text/css" href="/colors/{{ color }}.css">
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+
+    
+<link rel="icon" href="/img/brand_black.png">
+
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-55063995-2', 'auto');
+    ga('send', 'pageview');
+</script>
+
+<!-- for Google -->
+<meta name="description" content="{{description}}" />
+
+<meta name="author" content="Nick Shaw" />
+<meta name="copyright" content="Nick Shaw" />
+<meta name="application-name" content="s-kape" />
+
+<!-- for Facebook -->          
+<meta property="og:title" content="{{title}}" />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="{{img}}" />
+<meta property="og:url" content="{{url}}" />
+<meta property="og:description" content="{{description}}" />
+
+<!-- for Twitter -->          
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:title" content="{{title}}" />
+<meta name="twitter:description" content="{{description}}" />
+<meta name="twitter:image" content="{{img}}" />
+
+</head>
+  
+<body>
+    
+{{ header }}
+
+<div class="{{ bodyType }}">
+    {{ nav }}
+   
+
+  <!-- Modal -->
+  <div class="modal fade" id="picModal" role="dialog">
+>
+</div>
+
+
+<!-- Every thing goes into the fluid container-->
+    <div class="container-fluid page-content">
+        {{ pageContent }}
+    </div>
+        
+     
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/javascript/bootstrap.min.js"></script>
+    <script src="/javascript/jquery.fittext.js"></script>
+    <script src="/javascript/s-kape.js"></script>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" id ="start-page">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>s-kape</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- s-kape style -->
+    <link rel="stylesheet" type="text/css" href="/css/s-kape.css">
+    <link rel="stylesheet" type="text/css" href="/css/color/blue">
+    <link rel="icon" href="/img/brand_black.png">
+    <style>
+        html{
+        background:
+        linear-gradient(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.25)),
+        url(https://storage.googleapis.com/s-kape/front-page.jpg) no-repeat center center fixed;
+        }
+    </style>
+  </head>
+  <body>
+      
+      <div class="body body-noback">
+          <div class="navbar-fixed-top navbar">
+        <div class="container-fluid">
+            <div class = "navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="glyphicon glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                </button>
+                
+                <a class="navbar-brand" href="/"><img alt="Brand" src="/img/brand.png"></a>
+                
+                <p class="navbar-text nav-bar-title-text">plan your s-kape</p>
+                
+            </div>
+            
+            <div id = 'navbar' class = 'navbar-collapse collapse'>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/pics">pics</a></li>
+                    <li><a href="/posts">posts</a></li>
+                    <li><a href="/about">about</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+ 
+           <div class="container-fluid" >     
+        
+            <div class="start">
+            Latest Post
+            <h1>{{.Title}}</h1>
+            {{.Comment}}.. <a href="/posts/{{.Name}}">Read more</a>, <a href="/posts">read other posts</a> or <a href="/pics">look at pics.</a>
+        </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    
+  </body>
+</html>

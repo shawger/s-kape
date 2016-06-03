@@ -1,0 +1,31 @@
+<!-- All the fun jscript on the pics page -->
+<script src='/js/admin-pics.js'></script>
+
+<!-- Template for pic editing page (expected a header and footer is already also loaded. Pics will be loaded with ajax-->
+<div id='message'>msg</div>
+<!-- Some buttons to do some admin functions -->
+<div class='row' style='margin-bottom:10px;'>
+        <div class='col-md-2'><form method="get" action="/admin/pics-local-update">
+            <button type="submit">Local Update</button>
+        </form>
+        </div>
+        <div class='col-md-2'>
+        <form method="get" action="/admin/pics-remote-update">
+            <button type="submit">Remote Update</button>
+        </form>
+        </div>
+</div>
+
+<!-- Search panel-->
+<div class='panel' id='search'>
+    <div class='row'>
+        <div class='col-md-3'><input type='text' placeholder='Name' id='name-search'></div>
+        <div class='col-md-3'><input type='text' placeholder='Title' id='title-search'></div>
+        <div class='col-md-3'><input type='text' placeholder='Location' id='location-search'></div>
+        <div class='col-md-3'><input type='text' placeholder='Activity' id='activity-search'></div>
+    </div>
+</div>
+
+<!-- Place for all the pictures to go -->
+
+<div id='pics'></div>

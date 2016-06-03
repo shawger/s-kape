@@ -1,0 +1,22 @@
+<style>
+    .header{
+        background: linear-gradient({{ colorOverlay }},{{ colorOverlay }}),url("{{ picURL }}");
+    background-size: cover;
+    background-color: {{ backgroundColor }};
+    }
+</style>
+
+<div class="header" id="header">
+    <meta property="og:image" content="{{ picURL }}"/>
+    <div class="content">
+        <div class="title col-sm-12">
+            <h1 class="ftLarge">{{ title }}</h1>
+        </div>
+        <div class="subheadings">
+            {{ subheadings }}
+        </div>
+    </div>
+    <div id="scroll">
+        v
+    </div>
+</div>

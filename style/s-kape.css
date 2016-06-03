@@ -1,0 +1,630 @@
+/*!
+ * S-Kape.com cusotm css
+ * Nick Shaw
+ */
+ 
+ /* Import the 2 main fonts*/
+ 
+@import url(http://fonts.googleapis.com/css?family=Molengo);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+
+.cards {
+    max-width: 1000px;
+    margin: 0 auto; 
+}
+
+.card {
+    width:100%;
+    padding-bottom: 100%;
+    box-shadow: rgba(85, 85, 85, 0.6) 1px 1px 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+}
+
+.card .card-pic {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height:75%;
+    width:100%;
+    color: white;
+    font-family: 'Molengo';
+    font-weight: 900;
+    text-shadow: 0 1px 0 black;
+    text-align: center;
+    background-color: none;
+}
+
+.card .card-title {
+    color: white;
+    font-family: 'Molengo';
+    text-shadow: 0 1px 0 black;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    width: 100%;
+    background-color: none;
+    
+}
+
+.card .card-content {
+    position: absolute;
+    padding:2px;
+    right: 0;
+    top: 75%;
+    height:25%;
+    width:100%;
+    color:black;
+    text-align: center;
+    background-color: none;
+
+}
+
+#query-type{
+    display: none;
+}
+
+#results{
+    display: none;
+}
+
+.search-box{
+    margin:20px;
+    
+}
+
+.header {
+    width:100%;
+    height: calc(100vh);
+    font-family: 'Molengo';  
+    text-shadow: 0 1px 0 black;
+    position: relative;
+}
+
+.header .content{
+    position: absolute;
+    top: 50%;
+    transform: translate(0%, -50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+}
+
+.header .content h1{
+    color: white;
+    font-weight: 900;
+}
+
+.header .content .subheadings{
+    color: white;
+    font-weight: 700;
+    width:70%;
+    margin: 0 auto;
+}
+
+.header #scroll{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 26px;
+    cursor: pointer;
+    color: white;
+    background-color:rgba(0, 0, 0, 0.05);
+}
+
+.header #scroll:hover{
+    color: white;
+    background-color:rgba(0, 0, 0, 0.4);
+    
+}
+
+/* This div is for storing some data on the page. Never display */
+#pic-id{
+    display: none;
+}
+
+/* ############
+Post settings
+   ############*/
+   
+
+.post-pic-img {
+    margin: 0 auto;
+    display: inline-block;
+    position:relative;
+    width:100%;
+}
+
+.post-pic-title{
+   width: 100%; 
+   font-family: 'Molengo';
+   font-weight: 900;
+   font-size: 24px;
+   text-align: center;
+   padding-top: 5px;
+   padding-bottom:5px;
+   text-shadow: 0 1px 0 black;
+}
+
+.post-pic{
+   position: relative;
+   text-align:center;
+   font-size: 0;
+   width:100%;
+   padding-right: 0px;
+   padding-left: 0px;
+   margin-top: 40px;
+   margin-bottom: 40px;
+   box-shadow: rgba(85, 85, 85, 0.5) 0px 5px 15px;
+   cursor: pointer;
+}
+
+
+.post-body{
+    padding-top: 20px;
+    padding-right: 0px;
+    padding-left: 0px;
+    max-width:800px;
+    margin: auto;
+}
+
+.post{
+    max-width:800px;
+    margin-left:auto;
+    margin-right:auto;
+    margin-top: 10px;
+    padding-top: 0px;
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.post p{
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+.post-list{
+    margin-bottom:20px;
+}
+
+.post-title a{
+    font-size: 24px;
+    font-family: 'Molengo';
+}
+
+/* ############
+Navbar settings
+   ############*/
+
+.navbar {
+    font-family: 'Molengo';
+    font-weight: 500;
+	font-size: 30px;
+    margin-bottom: 5px;
+    box-shadow: rgba(85, 85, 85, 0.7) 0px 5px 25px;
+}
+
+.navbar-default .navbar-brand {
+	font-size: 30px;
+}
+
+button .navbar-toggle .collapased{
+    height: 45px;
+    margin: 0px;
+}
+
+.navbar-toggle {
+    height: 45px;
+    margin: 0px;
+}
+
+.navbar-search button span {
+    background-color: none;
+}
+.navbar-search {
+    height: 45px;
+    margin: 0px;
+    background-color: none;
+}
+
+.navbar-header {
+    height: 50px;
+}
+
+.navbar-wide {
+    width:100%;
+    height:50px;
+}
+
+.nav-links {
+    text-align: right;
+}
+
+.navbar-right a {
+    font-size: 24px;
+    padding-left:5px;
+    padding-right:5px;
+    margin-left:5px;
+    margin-right:5px;
+    text-align: right;
+    height: 45px;;
+    
+}
+
+.navbar-brand img{
+    height:40px;
+    width:40px;
+}
+
+.navbar-brand {
+    height: 50px;
+    width: 60px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 10px;
+    padding-left: 10px;
+}
+
+.navbar-text {
+    height:24px;
+    margin-top:auto;
+    margin-bottom:0px;
+    padding-top:4px;
+    text-align: center;
+    display: none;
+}
+
+.static-nav-bar{
+    font-family: 'Molengo';
+    font-weight: 900;
+    box-shadow: #555 0px 2px 10px;
+    margin-bottom: 10px;
+}
+
+.start-nav-title{
+    text-align: left;
+    margin-top: 4px;
+    
+}
+
+.start-nav-title a{
+    text-align: center;
+    
+}
+
+.navbar-nav .active {
+    border-bottom: 5px solid black;
+}
+
+.nav > li:hover{
+    border-bottom: 5px solid black;
+}
+
+/* ############
+Lightbox popup
+   ############*/
+   
+.modal {
+  text-align: center;
+}
+.modal-content {
+    border: none;
+    border-radius: 0px;
+}
+
+.modal-footer {
+    text-align: left;
+}
+
+.modal-body{
+    padding: 0px;
+}
+
+.modal-header{
+    border: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: center;
+}
+
+.modal-left{
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    top: 0;
+    left: 0;
+    background: rgba(0,0,0,0.0);
+    text-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
+}
+
+.modal-left:hover{
+    background: rgba(0,0,0,0.3)
+}
+
+.modal-left span{
+    top: 50%;
+    font-size: 40px;
+}
+
+.modal-right{
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0,0);
+    text-shadow: 2px 2px 4px #000000;
+    cursor: pointer;
+}
+
+.modal-right:hover{
+    background: rgba(0,0,0,0.3)
+}
+
+.modal-right span{
+    top: 50%;
+    font-size: 40px;
+}
+
+.modal-close{
+    position: absolute;
+    height: 40px;
+    background-color: black;
+    width: 40px;
+    top: 0;
+    right: 0;
+    background: rgba(0,0,0,0);
+    text-shadow: 2px 2px 4px #000000;
+    z-index: 1;
+    text-align: center;
+    cursor: pointer;
+}
+
+.modal-close span{
+    color: white;
+    font-size: 30px;
+}
+
+
+
+.modal-backdrop
+{
+    opacity:0.9 !important;
+}
+
+.modal:before {
+    display: inline-block;
+    vertical-align: middle;
+    content: " ";
+    height: 100%;
+  }
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+  width: 95%;
+  margin: 0px;
+}
+
+
+button.close{
+    padding-top:5px;
+    text-shadow: none;
+    opacity: 1;
+}
+/* ############
+Standard stuff for all pages
+   ############*/
+ 
+body {
+	font-family: 'Open Sans';
+	font-size:20px;
+    background: none;
+}
+
+.body-with-nav {
+	margin-top:60px;
+}
+
+
+body-noback {
+	font-family: 'Open Sans';
+	font-size:20px;
+    background: none;
+    
+}
+
+blockquote {
+    font-size: 22px;
+}
+
+html {
+    /*background:
+        linear-gradient(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.25)),
+        url(https://storage.googleapis.com/s-kape/front-page.jpg) no-repeat center center fixed;*/
+    
+    background: none;
+        
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    min-height:100%;
+}
+
+.center {
+    text-align:center;
+}
+
+.page-content{
+    max-width:1000px;
+}
+
+input {
+    padding: 5px;
+}
+
+.height-500 {
+    height: 500px;   
+}
+
+.ui-loader {
+    display: none;
+}
+
+h1 {
+    font-family: 'Molengo';
+    font-weight: 900;
+    font-size: 42px;
+    
+}
+
+.post h1 {
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+h2 {
+    font-family: 'Molengo';
+    font-weight: 700;
+    font-size: 34px;
+    margin-top: 70px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+
+h3 {
+    font-family: 'Molengo';
+    font-weight: 600;
+    font-size: 28px;
+    padding-right: 30px;
+    padding-left: 30px;
+}
+/* Special options for big screen. Only use if nessessary */
+@media screen and (min-width: 1000px) {
+
+}
+
+/* Special options for small screen. Only use if nessessary */
+@media screen and (max-width: 767px) {
+    
+    .start-nav-title{
+        text-align: center;
+    }
+    .nav-links {
+        text-align: center;
+    }
+    .navbar-right a {
+        text-align: center;
+    }
+    
+    .navbar-nav .active {
+        border-bottom: none;
+    }
+
+    .nav > li:hover{
+        border-bottom: none;
+    }
+    
+    .post p {
+        padding: 0px;
+    }
+    
+    .post h1 {
+        padding: 0px;
+    }
+    
+    .post h2 {
+        padding: 0px;
+    }
+    
+    .post h3 {
+        padding: 0px;
+    }
+    
+    .nav-bar-title-text {
+        display: none;
+    }
+    
+}
+.post-info-edit input {
+    border: none;
+    box-shadow: none;
+    outline:none;
+    font-family: 'Courier New';
+}
+
+.post-edit-buttons {
+    border-bottom-color: grey;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+}
+
+.post-info-edit input:focus {
+    border: none;
+    box-shadow: none;
+    outline:none;
+}
+
+#content {
+    font-size: 20px;
+    font-color: black;
+}
+
+.post-content-edit {
+    font-family: 'Courier New';
+    border: none;
+    box-shadow: none;
+    outline:none;
+}
+
+.post-content-edit:focus{
+    border: none;
+    box-shadow: none;
+    outline:none;
+}
+
+.post-form {
+    max-width: 900px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+.nav-link {
+    cursor: pointer;
+}
+
+/* Special options for small screen. Only use if nessessary */
+@media screen and (max-width: 480px) {
+    
+    .post-header {
+        top: 0;
+        transform: none;
+        height: 100%;
+    }
+    
+    .start {
+        width:100%;
+        min-width:300px;
+        padding-right:10px;
+        padding-left:10px;
+    }
+        
+}
+
+/*This should always be at the very bottom!*/
+.nopadding {
+   padding: 0;
+}
+
+
+ 

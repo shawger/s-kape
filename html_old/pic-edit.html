@@ -1,0 +1,24 @@
+<!-- Form for editing a single pic. Loaded with ajax-->
+<div class='panel nopadding height-500'>
+    <div class="col-md-8 nopadding"><img src='{{.URL}}' class="height-500" alt-text='{{.Title}}'></div>
+    <div class="col-md-4"><h3>{{.Name}}</h3></div>
+    <div class="col-md-4">
+        <div class="col-md-3">Title</div>
+        <div class="col-md-9"><input type="text" value= "{{.Title}}" id="title-{{.Name}}"></div>
+        
+        <div class="col-md-3">Location</div>
+        <div class="col-md-9"><input type="text" value= "{{.Location}}" id="location-{{.Name}}"></div>
+        
+        <div class="col-md-3">Activity</div>
+        <div class="col-md-9"><input type="text" value= "{{.Activity}}" id="activity-{{.Name}}"></div>
+        
+        <div class="col-md-3">Date</div>
+        <div class="col-md-9"><input type="text" value= "{{.DateString}}" id="date-{{.Name}}"></div>
+        
+        <div class="col-md-12">Comment</div>
+        <div class="col-md-12"><textarea rows="4" cols="30" id="comment-{{.Name}}">{{.Comment}}</textarea></div>
+        
+        <div class="col-md-6"><button onclick="updatePic({{.Name}})">Click me</button></div>
+        <div class="col-md-6"><div id="messages-{{.Name}}"></div></div>
+    </div>
+</div>

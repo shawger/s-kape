@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    
+    <title>s-kape</title>
+
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Lightbox -->
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.css">
+    
+    <!-- s-kape style -->
+    <link rel="stylesheet" type="text/css" href="/css/s-kape.css">
+    <link rel="stylesheet" type="text/css" href="/css/color/{{.Color}}">
+    
+    
+    
+    
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    
+    
+
+    
+<link rel="icon" href="/img/brand_black.png">
+</head>
+  
+<body>
+
+<div class="body-with-nav">         
+    <div class="navbar-fixed-top navbar">
+        <div class="container-fluid">
+            <div class = "navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="glyphicon glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+                </button>
+                
+                <a class="navbar-brand" href="/"><img alt="Brand" src="/img/brand.png"></a>
+                
+                <p class="navbar-text nav-bar-title-text"> {{ title }}</p>
+                
+            </div>
+            
+            <div id = 'navbar' class = 'navbar-collapse collapse'>
+                <ul class="nav navbar-nav navbar-right">
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-default navbar-fixed-top" id="overlay-controls">
+    <div class="container-fluid" >
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-wide">
+        <button type="button" id="panel-close">
+            <span>x</span>
+        </button>
+        <button type="button" id="panel-info-btn">
+            <span>i</span>
+        </button>
+        <a class="navbar-brand" id="overlay-title"></a>
+        </div>
+    </div><!-- /.container-fluid -->
+    </nav>
+
+<!-- Every thing goes into the fluid container-->
+    <div class="container-fluid">
+        {{ pageContent }}
+    </div>
+        
+     
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/bootstrap.min.js"></script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/4.0.1/ekko-lightbox.js"></script>
+    </div>
+  </body>
+</html>

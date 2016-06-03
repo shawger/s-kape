@@ -1,0 +1,117 @@
+.static-nav-bar {
+    background-color: {{ color.darker }};
+}
+
+.navbar-fixed-top {
+    background-color: {{ color.darker }};
+}
+
+.navbar-nav .active {
+    background-color: none;
+    border-bottom-color: {{ color.darkest }};
+}
+
+.navbar-nav .active:hover {
+    border-bottom-color: {{ color.darkest }};
+}
+
+.nav > li > a:hover{
+    background-color:{{ color.darker }};
+    border-bottom-color: {{ color.base }};
+}
+
+.nav > li:hover{
+    border-bottom-color: {{ color.base }};
+}
+
+.start-nav-title a {
+    color: white;
+}
+
+.navbar-text {
+    color: white;
+}
+.start-nav-title {
+    color: white;
+}
+
+.navbar-right a {
+    color: white;
+}
+
+.start {
+    color: white;
+}
+
+.start a{
+    color: white;
+}
+
+.post-pic-title {
+    background-color: {{ color.base }};
+    color: white;
+}
+
+.post-header {
+    background-color: {{ transparent }};
+    color: white;
+}
+
+.post-header h1 {
+    color: white;
+}
+
+.start h1 {
+    color: white;
+}
+
+h1 {
+    color: {{ color.darkest }};
+}
+
+h2 {
+    color: {{ color.darker }};
+}
+
+h3 {
+    color: {{ color.base }};
+}
+
+a {
+    color: {{ color.base }};
+}
+
+.panel-title {
+    color: white;
+    background-color: {{ color.base }};
+}
+
+.glyphicon {
+    color: {{ color.darkest }};
+}
+
+.glyphicon-menu-right {
+    color: white;
+}
+
+.glyphicon-menu-left {
+    color: white;
+}
+
+.glyphicon-remove {
+    color: white;
+}
+
+blockquote {
+    color: {{ color.base }};
+    border-left-color: {{ color.base }};
+}
+
+.modal-header {
+    color: white;
+    background-color: black;
+}
+
+button.close{
+    color: white;
+}
