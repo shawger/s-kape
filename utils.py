@@ -61,7 +61,7 @@ class ServePage:
         color = colors.Color.get_by_id(self.color)
         
         if(color != None):
-            colorOverlay = color.transparent("0.5")
+            colorOverlay = color.transparent("0.3")
             backgroundColor = color.lightest;
         else:
             colorOverlay = "rgba(0, 0, 0, 0.7)"
