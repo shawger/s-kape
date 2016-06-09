@@ -1,16 +1,18 @@
-#posts.py
-#
-#Nick Shaw
-#Posts are a main data type
-# - They are stored and retrieved using nbd
-# - They are added to the search index for easy Lookup
-#
-#Code in this file is for:
-# - Serving posts
-# - Storing posts
-# - Retreiving parts of a post
+"""
+Posts are a main data type
+- They are stored and retrieved using nbd
+- They are added to the search index for easy Lookup
 
-#Imports
+Code in this file is for:
+- Serving posts
+- Storing posts
+- Retreiving parts of a post
+"""
+
+####################################################
+#Imports and setup
+####################################################
+
 #python libs
 import webapp2
 import os
@@ -37,9 +39,18 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
     extensions=['jinja2.ext.autoescape'],
     autoescape=False)
+
+
+####################################################
+#Classes
+####################################################
     
 #The storage object
 class Post(ndb.Model):
+""" Contains data for posts. A post is a blog post in the blog.
+    Is inheireted from ndb.model 
+    Additional methods for storing and retrieving posts.
+"""
     
     #Post properties
     name = ndb.StringProperty()             #name of the post. also serves as key
@@ -57,8 +68,8 @@ class Post(ndb.Model):
     text = ndb.TextProperty()               #text version of post
     publish = ndb.BooleanProperty()         #Whether or not the post is published
     
-    #Converts a post into raw text for backup purposes
-    def toTxt(self,rh):
+    def toTxt(self):
+    """ Converts a post into raw text for backup purposes"""
         
         #Get post elements and put them in a string
         text = "// This is a template for a blog post on s-kape.com\n\n"
@@ -81,6 +92,11 @@ class Post(ndb.Model):
  
     #Generates a and returns card for a post
     def genCard(self,size):
+    """ Generates a and returns card for a post 
+
+    Keyword arguments:
+        size -- The size of the picture to use for a post as a text string
+    """
     
         #Check if the post has a color set. If not set to blue
         if(self.color != ""):
@@ -423,9 +439,9 @@ class Update(webapp2.RequestHandler):
         #pics can be included in the post.
         #the format is {pic <pic name>}
         #use regex to find matches and replace them with the proper html
-        html = re.sub(ur'{pic\s([A-Za-z0-9\-]*)}',imgHTML,html)
+        html = re.sub(ur'{pic\s([A-Za-z0-9\-]*)}',_imgHTML,html)
         
-        html = re.sub(ur'{cards\s([A-Za-z0-9\-\:\,]*)}',cardHTML,html)
+        html = re.sub(ur'{cards\s([A-Za-z0-9\-\:\,]*)}',_cardHTML,html)
         
         #Set the publish varible. If we are adding the publish will be no.
         #If we are updating it will be whatever it used to be
@@ -487,68 +503,79 @@ class PostPublish(webapp2.RequestHandler):
             
         # Get the stuff from the form
         name = self.request.get('name').strip()
-            
+        
+        # Get the post
         p = Post.get_by_id(name)
             
+        # Check if post is found
         if(p == None):
             self.response.out.write("error publishing/unpublishing")
             return
-            
+        
+        # If the post is published, then unpublish
         if(p.publish):
             p.publish = False
             msgString = "un-published"
+
+        # If the post is un-published, then publish
         else:
             p.publish = True
             msgString = "published"
-            
+        
+        # Update the record in the nbd
         p.put()
+
+        # Update the search record
         addToSearch(p)
+
+        # Send message to user
         self.response.out.write(msgString)
 
-def PostQuery(text):
-    
-    if(text == ""):
-        #Return all for black query
-        allPosts = Post.query()
-        postList = ""
-        
-        i = 0
-        for post in allPosts:
-        
-            if(i==0):
-                postList = postList + "post:" + post.name
-            else:
-                postList = postList + ",post:" + post.name
-           
-            i = i + 1
-    
-        return postList
-    
-    else:
-        return ""
+
+#####################################################################
+#Public Functions
+#####################################################################   
 
 def PostCard(name,size):
+    """ Creates an HTML card for a post or a blank string if post 
+        is not found.
 
+    Keyword arguments:
+        name -- The name of the card to be found
+        size -- The size (as a string) of the card to be found.
+    """
+
+    #If name is blank, return blank string
     if(name==""):
         return ""
     
+    #Find the Post
     p = Post.get_by_id(name)
     
+    #If post is not found, return blank string
     if (p == None):
         return ""
     
     return p.genCard(size)
 
-#Adds a post to the search libary
 def addToSearch(post):
-    
+    """ Add a or update a post in the search index
+
+    Keyword arguments:
+        post -- The name of the card to be found
+    """
+
     document = makeSearchDocumet(post)
     index = search.Index('posts')
     index.delete(post.name)
     index.put(document)
     
 def makeSearchDocumet(post):
-    
+    """ Create a search document for search index from a post
+
+    Keyword arguments:
+        post -- The name of the card to be found
+    """
     
     #We are going to add publish the search options
     if(post.publish):
@@ -558,6 +585,7 @@ def makeSearchDocumet(post):
         
     #set up the document
     document = search.Document(
+
         # Setting the doc_id is optional. If omitted, the search service will
         # create an identifier.
         doc_id=post.name,
@@ -579,17 +607,33 @@ def makeSearchDocumet(post):
     return document
     
 def findCards(query):
+    """Find posts in earch index using search query.
+
+    Keyword arguments:
+        query -- The query used to find posts.
+                 A blank query will find all posts.
+                 If the user is not an admin, they will only see un-published posts.
+
+    Returns:
+        List of posts in a string. The format is post:<post_name_1>,post:<post_name_2>,post:<post_name_n>...
+        If no posts are found, a blank string is returned 
+    """
     
     postList = ""
     index = search.Index('posts')
             
+    #Check to see if user is an administrator. If they are not, add options to query to only
+    #find unpublished posts.
     user = users.get_current_user()
     if users.is_current_user_admin():
         query_string = "published: no OR published: yes " + query
     else:
         query_string = "published: yes " + query
             
+    #Blank query, find all posts. Sort by date.
     if(query == ""):
+
+        #Set up search to sort by date
         sort_date= search.SortExpression(
             expression='date',
             direction=search.SortExpression.DESCENDING,
@@ -597,22 +641,30 @@ def findCards(query):
         sort_options = search.SortOptions(expressions=[sort_date])
         query_options = search.QueryOptions(
             sort_options=sort_options)
+
+        #Create query string
         query_string = search.Query(query_string=query_string, options=query_options)  
 
+    #Find posts according to search index
     documents = index.search(query_string)
-            
-    i = 0
+    
+    #Create comma seperated list of posts in the format post:<post_name_1>,post:<post_name_2>,post:<post_name_n>...
+    posts = []
     for document in documents:
-        if(i==0):
-            postList = "post:" + document.field('name').value
-        else:
-            postList = postList + ",post:" +  document.field('name').value
-            
-        i = i + 1
+        posts.append("post:" + document.field('name').value)
         
+    postList = ",".join(posts)
+
     return postList
-        
-def imgHTML(match):
+
+#####################################################################
+#Private Functions
+#####################################################################   
+
+# Function used as parse out the image name as part of a regex
+# The match will contain the name of an image.If the image exists
+# then return html for a picture in a post
+def _imgHTML(match):
 
     #See if picture exists
     name = str(match.group(1))
@@ -627,33 +679,42 @@ def imgHTML(match):
         }
         
     return template.render(templateValues)
-    
-    
-def cardHTML(match):
+
+
+# Function used as parse out card names and return the cards (html)
+# The card name will be in the format <type>:<name> and seperated by columns.
+# The are some special keywords that will perform a special function instead
+def _cardHTML(match):
 
     #See if cards exists
     cardsString = str(match.group(1))
     
+    # latest-posts is a special keyword that will return post cards in order of date
     if (cardsString == "latest-posts"):
-    
+
+        #The blank query to findCards will order the posts automatically
         cardsString = findCards("")
-        
+    
+    # latest-pics is a special keyword that will return pic cards in order of date
     if (cardsString == "latest-pics"):
     
+        #The blank query to findCards will order the pics automatically
         cardsString = pics.findCards("")
     
     cardCollection = []
     
     cardCollection = cardsString.split(",")
     
+    #1 or 0 cards to load
     if(len(cardCollection) < 1):
         cardCollection.append(cardsString)
     
+    #Make some html
     returnString = "<div class='row'>"
     
+    #Only return 3 cards
     i = 0
     for card in cardCollection:
-    
         if(i < 3):
             returnString = returnString + cards.getCard(card,"")
         
