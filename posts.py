@@ -1,14 +1,12 @@
-"""
-Posts are a main data type
-- They are stored and retrieved using nbd
-- They are added to the search index for easy Lookup
+"""Posts are a main data type
+    - They are stored and retrieved using nbd
+    - They are added to the search index for easy Lookup
 
-Code in this file is for:
-- Serving posts
-- Storing posts
-- Retreiving parts of a post
+    Code in this file is for:
+    - Serving posts
+    - Storing posts
+    - Retreiving parts of a post
 """
-
 ####################################################
 #Imports and setup
 ####################################################
@@ -47,10 +45,10 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     
 #The storage object
 class Post(ndb.Model):
-""" Contains data for posts. A post is a blog post in the blog.
-    Is inheireted from ndb.model 
-    Additional methods for storing and retrieving posts.
-"""
+    """ Contains data for posts. A post is a blog post in the blog.
+        Is inheireted from ndb.model 
+        Additional methods for storing and retrieving posts.
+    """
     
     #Post properties
     name = ndb.StringProperty()             #name of the post. also serves as key
@@ -69,7 +67,7 @@ class Post(ndb.Model):
     publish = ndb.BooleanProperty()         #Whether or not the post is published
     
     def toTxt(self):
-    """ Converts a post into raw text for backup purposes"""
+        """ Converts a post into raw text for backup purposes"""
         
         #Get post elements and put them in a string
         text = "// This is a template for a blog post on s-kape.com\n\n"
@@ -92,11 +90,11 @@ class Post(ndb.Model):
  
     #Generates a and returns card for a post
     def genCard(self,size):
-    """ Generates a and returns card for a post 
+        """ Generates a and returns card for a post 
 
-    Keyword arguments:
-        size -- The size of the picture to use for a post as a text string
-    """
+            Keyword arguments:
+            size -- The size of the picture to use for a post as a text string
+        """
     
         #Check if the post has a color set. If not set to blue
         if(self.color != ""):
