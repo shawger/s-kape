@@ -61,6 +61,10 @@
     color: white;
 }
 
+.footer {
+    background-color: {{ color.lightest }};
+}
+
 .start h1 {
     color: white;
 }

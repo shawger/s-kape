@@ -479,7 +479,7 @@ class Update(webapp2.RequestHandler):
         updatePost.put()
         
         #convert post to txt and save
-        updatePost.toTxt(self)
+        updatePost.toTxt()
         
         #add post to search index
         addToSearch(updatePost)

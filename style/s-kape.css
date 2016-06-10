@@ -123,6 +123,13 @@
     
 }
 
+.footer {
+    text-align: center;;
+    vertical-align: middle;
+    padding-top:12px;
+    height: 50px;
+}
+
 /* This div is for storing some data on the page. Never display */
 #pic-id{
     display: none;
@@ -166,7 +173,6 @@ Post settings
 
 
 .post-body{
-    padding-top: 20px;
     padding-right: 0px;
     padding-left: 0px;
     max-width:800px;
@@ -465,6 +471,7 @@ html {
 
 .page-content{
     max-width:1000px;
+    min-height: calc(100vh - 110px);
 }
 
 input {
@@ -489,15 +496,20 @@ h1 {
 .post h1 {
     padding-right: 30px;
     padding-left: 30px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    text-align: center;
 }
 
 h2 {
     font-family: 'Molengo';
     font-weight: 700;
     font-size: 34px;
-    margin-top: 70px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     padding-right: 30px;
     padding-left: 30px;
+    text-align: center;
 }
 
 h3 {
@@ -506,6 +518,7 @@ h3 {
     font-size: 28px;
     padding-right: 30px;
     padding-left: 30px;
+    text-align: center;
 }
 /* Special options for big screen. Only use if nessessary */
 @media screen and (min-width: 1000px) {
