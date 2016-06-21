@@ -4,6 +4,7 @@ search()
 //A queue for printing cards
 var cardsToLoad = new Array();
 var cardsRequestedCounter = 0;
+var loadingCards = false;
 
 
         
@@ -57,7 +58,7 @@ $(window).scroll(function() {
     var pageHeight = $( document ).height();
     
     //If the current view is 100px from the bottom, load more cards
-    if(scrollHeight + browserHeight > pageHeight - 100){
+    if(scrollHeight + browserHeight > pageHeight - 100 && ! loadingCards){
         
         //Large screen. load 3 cards
         if($( window ).width() >= 767){
@@ -191,12 +192,13 @@ function loadCards(numberOfCards) {
         cardSize = "small";
     }
         
-    
+    loadingCards = true;
     $.post("/cards/get", {cards: requestString, size: cardSize}, function(result){
         var oldHTML = $("#cards").html();
         $("#cards").html(oldHTML + result);
         $(".card-title").fitText(0.7, { minFontSize: '20px', maxFontSize: '150px' });
         $(".card-content").fitText(1.8, { minFontSize: '16px', maxFontSize: '26px' });
+        loadingCards = false;
     });
     
 }

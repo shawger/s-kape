@@ -18,20 +18,19 @@
     width:100%;
     padding-bottom: 100%;
     box-shadow: rgba(85, 85, 85, 0.6) 1px 1px 10px;
-    margin-bottom: 20px;
     overflow: hidden;
     position: relative;
     cursor: pointer;
     border-bottom-width: 5px;
     border-bottom-style: solid;
-    border-bottom-color: black;
+    border-bottom-color: white;
 }
 
 .card .card-pic {
     position: absolute;
     right: 0;
     top: 0;
-    height:65%;
+    height:100%;
     width:100%;
     color: white;
     font-family: 'Molengo';
@@ -57,15 +56,23 @@
 .card .card-content {
     position: absolute;
     padding:5px;
-    padding-top:10px;
     right: 0;
-    top: 65%;
-    height:35%;
+    top: 70%;
+    height:30%;
     width:100%;
     color:black;
     text-align: center;
     background-color: none;
+     color: transparent;
+}
 
+ .card:hover .card-content{
+     color: white;
+     background-color: rgba(0, 0, 0, 0.15)
+ }
+
+ .card-col{
+     padding:3px;
 }
 
 #query-type{
@@ -499,8 +506,8 @@ h1 {
 .post h1 {
     padding-right: 30px;
     padding-left: 30px;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-top: 50px;
     text-align: center;
 }
 
@@ -508,8 +515,8 @@ h2 {
     font-family: 'Molengo';
     font-weight: 700;
     font-size: 34px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    margin-top: 50px;
+    margin-bottom: 50px;
     padding-right: 30px;
     padding-left: 30px;
     text-align: center;
@@ -519,6 +526,17 @@ h3 {
     font-family: 'Molengo';
     font-weight: 600;
     font-size: 28px;
+    padding-right: 30px;
+    padding-left: 30px;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 10px;
+}
+
+h4 {
+    font-family: 'Molengo';
+    font-weight: 500;
+    font-size: 26px;
     padding-right: 30px;
     padding-left: 30px;
     text-align: center;

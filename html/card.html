@@ -10,16 +10,13 @@
         #{{name}}.card .card-content{
                 background-color: "white";
         }
-        #{{name}}.card:hover .card-content{
-                background-color: {{ backgroundColorDark }};
-        }
         #{{name}}.card{
                 border-bottom-color: {{ color }};
         }
 
 </style>
 
-<div class="col-sm-4">
+<div class="col-sm-4 card-col">
         <a style="display:block" {{ url }}>
         <div class="card {{cardClass}}" id ="{{ name }}">
                 <div class='card-pic'>

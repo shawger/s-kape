@@ -115,7 +115,7 @@ class Post(ndb.Model):
                 'url': 'href = "/posts/' + self.name + '""',
                 'admin': "",
                 'colorOverlay': color.transparent("0.2"),
-                'colorOverlayDark': color.transparent("0.25"),
+                'colorOverlayDark': color.transparent("0.4"),
                 'color': color.base,
                 'picURL': picURL,
                 'backgroundColor': "white",
@@ -639,6 +639,7 @@ def findCards(query):
             default_value=0)
         sort_options = search.SortOptions(expressions=[sort_date])
         query_options = search.QueryOptions(
+            limit=1000,
             sort_options=sort_options)
 
         #Create query string

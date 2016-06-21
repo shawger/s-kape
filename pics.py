@@ -50,12 +50,6 @@ class Pic(ndb.Model):
         
         cardTemplate = JINJA_ENVIRONMENT.get_template('/html/card.html')
         
-        #Link URL depends if admin
-        user = users.get_current_user()
-        if users.is_current_user_admin():
-            link = '/admin/pics/' + self.name
-        else:
-            link = '/pics/' + self.name
         
         cardTemplateValues = {
                 'name': self.name,
@@ -217,6 +211,13 @@ class PicModal(webapp2.RequestHandler):
         if(p == None):
             self.response.out.write("")
             return
+
+       #Link URL depends if admin
+        user = users.get_current_user()
+        if users.is_current_user_admin():
+            adminLink = '<a href="/admin/pics/' + p.name + '">Edit</a>' 
+        else:
+            adminLink = ''
             
         templateValues = {
             'title': p.title,
@@ -224,7 +225,8 @@ class PicModal(webapp2.RequestHandler):
             'location': p.location,
             'activity': p.activity,
             'comment': p.comment,
-            'imgURL': getPicURL(name,size)
+            'imgURL': getPicURL(name,size),
+            'admin': adminLink
         }
         
         #Load navigation template
@@ -440,9 +442,14 @@ def findCards(query):
             default_value=0)
         sort_options = search.SortOptions(expressions=[sort_date])
         query_options = search.QueryOptions(
+            limit=1000,
             sort_options=sort_options)
-        query = search.Query(query_string=query, options=query_options)  
+        
+    else:
+        query_options = search.QueryOptions(
+            limit=1000)
 
+    query = search.Query(query_string=query, options=query_options)
     documents = index.search(query)
             
     i = 0
