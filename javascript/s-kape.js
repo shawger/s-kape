@@ -11,7 +11,7 @@ currentWidth = $( window ).width();
 $(".ftLarge").fitText(0.9, { minFontSize: '28px', maxFontSize: '120px' });
 $(".ftSmall").fitText(1.8, { minFontSize: '16px', maxFontSize: '30px' });
 $(".card-title").fitText(0.7, { minFontSize: '20px', maxFontSize: '150px' });
-$(".card-content").fitText(1.8, { minFontSize: '12px', maxFontSize: '26px' });
+$(".card-content").fitText(1.8, { minFontSize: '16px', maxFontSize: '26px' });
 
 
 $(window).scroll(function() {

@@ -22,13 +22,16 @@
     overflow: hidden;
     position: relative;
     cursor: pointer;
+    border-bottom-width: 5px;
+    border-bottom-style: solid;
+    border-bottom-color: black;
 }
 
 .card .card-pic {
     position: absolute;
     right: 0;
     top: 0;
-    height:75%;
+    height:65%;
     width:100%;
     color: white;
     font-family: 'Molengo';
@@ -53,10 +56,11 @@
 
 .card .card-content {
     position: absolute;
-    padding:2px;
+    padding:5px;
+    padding-top:10px;
     right: 0;
-    top: 75%;
-    height:25%;
+    top: 65%;
+    height:35%;
     width:100%;
     color:black;
     text-align: center;
@@ -150,12 +154,11 @@ Post settings
 .post-pic-title{
    width: 100%; 
    font-family: 'Molengo';
-   font-weight: 900;
+   font-weight: 500;
    font-size: 24px;
    text-align: center;
    padding-top: 5px;
    padding-bottom:5px;
-   text-shadow: 0 1px 0 black;
 }
 
 .post-pic{

@@ -114,8 +114,9 @@ class Post(ndb.Model):
                 'title': self.title,
                 'url': 'href = "/posts/' + self.name + '""',
                 'admin': "",
-                'colorOverlay': color.transparent("0.4"),
-                'colorOverlayDark': color.transparent("0.5"),
+                'colorOverlay': color.transparent("0.2"),
+                'colorOverlayDark': color.transparent("0.25"),
+                'color': color.base,
                 'picURL': picURL,
                 'backgroundColor': "white",
                 'backgroundColorDark': "#DDD",
@@ -403,8 +404,8 @@ class Update(webapp2.RequestHandler):
             self.response.out.write("Title cannot be blank")
             return
        
-        if(len(title) > 20):
-            self.response.out.write("Title is too long. 20 chars max.")
+        if(len(title) > 40):
+            self.response.out.write("Title is too long. 40 chars max.")
             return
         
         #Check if this is an addtion or modification.
