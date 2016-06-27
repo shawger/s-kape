@@ -31,6 +31,8 @@ class ServePage:
         self.description = "An s-kape page"
         self.img = ""
         self.url = "www.s-kape.com"
+        self.pageType = ""
+        self.search = False
         
    
     #Sets color theme of page to load
@@ -61,7 +63,7 @@ class ServePage:
         color = colors.Color.get_by_id(self.color)
         
         if(color != None):
-            colorOverlay = color.transparent("0.3")
+            colorOverlay = color.transparent("0.2")
             backgroundColor = color.lightest;
         else:
             colorOverlay = "rgba(0, 0, 0, 0.7)"
@@ -104,11 +106,35 @@ class ServePage:
             adminControl = ""
             if users.is_current_user_admin():
                 adminControl = self.admin
+
+            #Display an active page
+            picActive = ""
+            postActive = ""
+            aboutActive = ""
+
+            if(self.pageType == "pic"):
+                picActive = 'class="active"'
+
+            if(self.pageType == "post"):
+                postActive = 'class="active"'
+
+            if(self.pageType == "about"):
+                aboutActive = 'class="active"'
+
+            
+            if(self.search):
+                search = '<li class="search" id="search-toggle"><a>search</a></li>'
+            else:
+                search = ""
             
             #Setup navigation template varibles
             navTemplateValues = {
                 'title': title,
                 'admin': adminControl,
+                'picActive': picActive,
+                'postActive': postActive,
+                'aboutActive': aboutActive,
+                'search': search,
             }
             
             #Load navigation template

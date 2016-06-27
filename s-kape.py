@@ -62,7 +62,9 @@ class AboutPage(webapp2.RequestHandler):
         if(p== None):
             page = utils.ServePage(self)
             page.setColor("orange")
+            page.pageType = "about"
             page.write("about","This is supposed to be about the s-kape page.")
+            
             
         else:
             page = utils.ServePage(self)
@@ -75,6 +77,7 @@ class AboutPage(webapp2.RequestHandler):
             page.description = "About s-kape.com"
             page.img = ""
             page.url = "www.s-kape.com/about"
+            page.pageType = "about"
             
             page.write(p.title,p.html)
 
@@ -109,6 +112,7 @@ class ResumePage(webapp2.RequestHandler):
             page.description = "Nick Shaw's Resume'"
             page.img = pics.getPicURL(p.pic,"normal")
             page.url = "www.s-kape.com/resume"
+            page.pageType = "about"
             
             page.write(p.title,p.html)
 

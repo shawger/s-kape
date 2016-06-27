@@ -17,9 +17,10 @@
             <div id = 'navbar' class = 'navbar-collapse collapse'>
                 <ul class="nav navbar-nav navbar-right">
                     {{ admin }}
-                    <li><a href="/pics">pics</a></li>
-                    <li><a href="/posts">posts</a></li>
-                    <li><a href="/about">about</a></li>
+                    {{ search }}
+                    <li {{ picActive }}><a href="/pics">pics</a></li>
+                    <li {{ postActive }}><a href="/posts ">posts</a></li>
+                    <li {{ aboutActive }}><a href="/about">about</a></li>
                 </button>
                 </ul>
                 

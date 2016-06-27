@@ -182,7 +182,10 @@ function loadCards(numberOfCards) {
     var cardSize = "normal";
     var width = $( window ).width();
     
-    if(width > 767){
+    if(width > 1200){
+        cardSize = "normal";
+    }
+    else if(width > 767){
         cardSize = "small";
     }
     else if(width > 400){
@@ -197,7 +200,7 @@ function loadCards(numberOfCards) {
         var oldHTML = $("#cards").html();
         $("#cards").html(oldHTML + result);
         $(".card-title").fitText(0.7, { minFontSize: '20px', maxFontSize: '150px' });
-        $(".card-content").fitText(1.8, { minFontSize: '16px', maxFontSize: '26px' });
+        $(".card-content").fitText(1.8, { minFontSize: '14px', maxFontSize: '28px' });
         loadingCards = false;
     });
     

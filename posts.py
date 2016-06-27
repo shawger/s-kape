@@ -114,8 +114,8 @@ class Post(ndb.Model):
                 'title': self.title,
                 'url': 'href = "/posts/' + self.name + '""',
                 'admin': "",
-                'colorOverlay': color.transparent("0.2"),
-                'colorOverlayDark': color.transparent("0.4"),
+                'colorOverlay': "rgba(0, 0, 0, 0.2)",
+                'colorOverlayDark': "rgba(0, 0, 0, 0.3)",
                 'color': color.base,
                 'picURL': picURL,
                 'backgroundColor': "white",
@@ -164,6 +164,7 @@ class View(webapp2.RequestHandler):
         page.description = p.comment
         page.img = pics.getPicURL(p.pic,"normal")
         page.url = "www.s-kape.com/posts/" + p.name
+        page.pageType = "post"
         
         #Create the header
         #Make the sub headings
@@ -229,6 +230,8 @@ class PostList(webapp2.RequestHandler):
         page.description = "s-kape.com posts"
         page.img = ""
         page.url = "www.s-kape.com/posts"
+        page.pageType = "post"
+        page.search = True
         
         #Send page  
         page.write("Posts",pageHTML)
@@ -268,6 +271,8 @@ class AddForm(webapp2.RequestHandler):
         
         #Set color
         page.setColor("grey")
+
+        page.pageType = "post"
         
         #Set admin options
         page.admin = '<li><a class="nav-link" id="post-submit" >save</a></li>'\
@@ -322,6 +327,8 @@ class UpdateForm(webapp2.RequestHandler):
         page.admin = '<li><a class="nav-link" id="post-submit" >save</a></li>'\
                         '<li><a class="nav-link" id="post-publish">'+publishText+'</a></li>'\
                         '<li><a class="nav-link" id="info-toggle">hide</a></li>'
+        
+        page.pageType = "post"
         
         #Send page to edit post to user
         page.write(p.title,content)
@@ -439,7 +446,9 @@ class Update(webapp2.RequestHandler):
         #the format is {pic <pic name>}
         #use regex to find matches and replace them with the proper html
         html = re.sub(ur'{pic\s([A-Za-z0-9\-]*)}',_imgHTML,html)
-        
+
+        html = re.sub(ur'{pics\s([A-Za-z0-9\-\,]*)}',_imgsHTML,html)
+
         html = re.sub(ur'{cards\s([A-Za-z0-9\-\:\,]*)}',_cardHTML,html)
         
         #Set the publish varible. If we are adding the publish will be no.
@@ -680,6 +689,65 @@ def _imgHTML(match):
         
     return template.render(templateValues)
 
+# Function used as parse out the image names as part of a regex
+# The match will contain a list of name of images .If the images exists
+# then return html for a picture in a post
+def _imgsHTML(match):
+
+    names = str(match.group(1))
+
+    picCollection = []
+    
+    picCollection = names.split(",")
+    
+    #1 or 0 pics to load
+    if(len(picCollection) < 1):
+        picCollection.append(names)
+
+    returnString = '<div class="grey-background">'
+
+    picNumber = len(picCollection)
+
+    colDiv = '<div class="col-sm-12">'
+
+    if(picNumber == 2):
+        colDiv = '<div class="col-sm-6">'
+    if(picNumber == 3):
+        colDiv = '<div class="col-sm-4">'
+    if(picNumber == 4):
+        colDiv = '<div class="col-sm-6">'
+    if(picNumber > 4):
+        colDiv = '<div class="col-sm-4">'
+
+    for pic in picCollection:
+
+        if(pic != ""):
+            p = pics.getPic(pic)
+
+            if (p != None):
+            
+                template = JINJA_ENVIRONMENT.get_template('/html/post-pic.html')
+                templateValues = {
+                    'p': p,
+                }
+            
+                picHtml = template.render(templateValues)
+
+                returnString = returnString + colDiv + picHtml + "</div>"
+    
+    return returnString + "</div>"
+
+    
+    if(p==None):
+        return "not found-" + name + "-"
+        
+    template = JINJA_ENVIRONMENT.get_template('/html/post-pic.html')
+    templateValues = {
+            'p': p,
+        }
+        
+    return template.render(templateValues)
+
 
 # Function used as parse out card names and return the cards (html)
 # The card name will be in the format <type>:<name> and seperated by columns.
@@ -710,7 +778,7 @@ def _cardHTML(match):
         cardCollection.append(cardsString)
     
     #Make some html
-    returnString = "<div class='row'>"
+    returnString = "<div class='row cards-imbed'>"
     
     #Only return 3 cards
     i = 0

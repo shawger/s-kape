@@ -1,27 +1,29 @@
 .static-nav-bar {
     background-color: {{ color.darker }};
+    border-bottom-color: {{ color.base }};
 }
 
 .navbar-fixed-top {
-    background-color: {{ color.darker }};
+    background-color: {{ color.base }};
+    border-bottom-color: {{ color.darker }};
 }
 
 .navbar-nav .active {
     background-color: none;
-    border-bottom-color: {{ color.darkest }};
+    border-bottom-color: {{ color.darker }};
 }
 
 .navbar-nav .active:hover {
-    border-bottom-color: {{ color.darkest }};
+    border-bottom-color: {{ color.darker }};
 }
 
 .nav > li > a:hover{
-    background-color:{{ color.darker }};
-    border-bottom-color: {{ color.base }};
+    background-color:{{ color.base }};
+    border-bottom-color: {{ color.darker }};
 }
 
 .nav > li:hover{
-    border-bottom-color: {{ color.base }};
+    border-bottom-color: {{ color.darker }};
 }
 
 .start-nav-title a {
@@ -48,7 +50,7 @@
 }
 
 .post-pic-title {
-    background-color: {{ color.base }};
+    background-color: none;
     color: white;
 }
 
@@ -116,6 +118,6 @@ blockquote {
     background-color: black;
 }
 
-button.close{
-    color: white;
+.grey-background {
+    background-color: {{color.lightest}};
 }

@@ -57,12 +57,12 @@ class Pic(ndb.Model):
                 'url': "",
                 'admin': "",
                 'colorOverlay': color.transparent("0.0"),
-                'colorOverlayDark': color.transparent("0.1"),
+                'colorOverlayDark': color.transparent("0.3"),
                 'picURL': getPicURL(self.name,size),
                 'backgroundColor': "#F5F5F5",
                 'backgroundColorDark': "#DDD",
                 'info': '<b>' + self.title + '</b><br>' + self.comment,
-                'cardClass': "pic", 
+                'cardClass': "pic card-noborder", 
         }
         
         return cardTemplate.render(cardTemplateValues)
@@ -100,6 +100,8 @@ class PicList(webapp2.RequestHandler):
         page.description = "s-kape.com pics"
         page.img = ""
         page.url = "www.s-kape.com/pics"
+        page.pageType = "pic"
+        page.search = True
                      
         page.write("Pics",pageHTML)
 
@@ -138,6 +140,8 @@ class AddForm(webapp2.RequestHandler):
            
         page = utils.ServePage(self)
         page.setColor("grey")
+
+        page.pageType = "pic"
         
         page.admin = '<li><a class="nav-link" id="pic-submit" >save</a></li>'
                      
