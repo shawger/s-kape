@@ -2,9 +2,9 @@
  * S-Kape.com cusotm css
  * Nick Shaw
  */
- 
+
  /* Import the 2 main fonts*/
- 
+
 @import url(http://fonts.googleapis.com/css?family=Molengo);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
@@ -16,6 +16,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
     overflow:auto;
+    
 }
 
 .cards {
@@ -75,7 +76,7 @@
     transform: translate(0%, -50%);
     width: 100%;
     background-color: none;
-    
+
 }
 
 .card .card-content {
@@ -120,7 +121,7 @@
 .header {
     width:100%;
     height: calc(100vh);
-    font-family: 'Molengo';  
+    font-family: 'Molengo';
     text-shadow: 0 2px 5px black;
     position: relative;
 }
@@ -160,7 +161,7 @@
 .header #scroll:hover{
     color: white;
     background-color:rgba(0, 0, 0, 0.4);
-    
+
 }
 
 .footer {
@@ -178,14 +179,14 @@
 /* ############
 Post settings
    ############*/
-   
+
 
 .post-pic-img {
     margin: 0 auto;
     display: inline-block;
     position:relative;
     width:100%;
-    
+
 }
 
 .post-pic-img-overlay {
@@ -193,7 +194,7 @@ Post settings
     height: 100%;
     position: absolute;
     top: 0;
-    background: 
+    background:
     linear-gradient(
       to bottom,
       rgba(0, 0, 0, 0),
@@ -342,7 +343,7 @@ button .navbar-toggle .collapased{
     margin-right:5px;
     text-align: right;
     height: 48px;;
-    
+
 }
 
 .navbar-brand img{
@@ -377,12 +378,12 @@ button .navbar-toggle .collapased{
 .start-nav-title{
     text-align: left;
     margin-top: 4px;
-    
+
 }
 
 .start-nav-title a{
     text-align: center;
-    
+
 }
 
 .navbar-nav .active {
@@ -396,7 +397,7 @@ button .navbar-toggle .collapased{
 /* ############
 Lightbox popup
    ############*/
-   
+
 .modal {
   text-align: center;
 }
@@ -510,7 +511,7 @@ button.close{
 /* ############
 Standard stuff for all pages
    ############*/
- 
+
 body {
 	font-family: 'Open Sans';
 	font-size:20px;
@@ -526,7 +527,7 @@ body-noback {
 	font-family: 'Open Sans';
 	font-size:20px;
     background: none;
-    
+
 }
 
 blockquote {
@@ -537,9 +538,9 @@ html {
     /*background:
         linear-gradient(rgba(255, 255, 255, 0.0), rgba(0, 0, 0, 0.25)),
         url(https://storage.googleapis.com/s-kape/front-page.jpg) no-repeat center center fixed;*/
-    
+
     background: none;
-        
+
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -561,7 +562,7 @@ input {
 }
 
 .height-500 {
-    height: 500px;   
+    height: 500px;
 }
 
 .ui-loader {
@@ -572,7 +573,7 @@ h1 {
     font-family: 'Molengo';
     font-weight: 900;
     font-size: 42px;
-    
+
 }
 
 .post h1 {
@@ -624,7 +625,7 @@ h4 {
 
 /* Special options for small screen. Only use if nessessary */
 @media screen and (max-width: 767px) {
-    
+
     .start-nav-title{
         text-align: center;
     }
@@ -634,7 +635,7 @@ h4 {
     .navbar-right a {
         text-align: center;
     }
-    
+
     .navbar-nav .active {
         border-bottom: none;
     }
@@ -642,27 +643,27 @@ h4 {
     .nav > li:hover{
         border-bottom: none;
     }
-    
+
     .post p {
         padding: 5px;
     }
-    
+
     .post h1 {
         padding: 0px;
     }
-    
+
     .post h2 {
         padding: 0px;
     }
-    
+
     .post h3 {
         padding: 0px;
     }
-    
+
     .nav-bar-title-text {
         display: none;
     }
-    
+
 }
 .post-info-edit input {
     border: none;
@@ -715,26 +716,23 @@ h4 {
 
 /* Special options for small screen. Only use if nessessary */
 @media screen and (max-width: 480px) {
-    
+
     .post-header {
         top: 0;
         transform: none;
         height: 100%;
     }
-    
+
     .start {
         width:100%;
         min-width:300px;
         padding-right:10px;
         padding-left:10px;
     }
-        
+
 }
 
 /*This should always be at the very bottom!*/
 .nopadding {
    padding: 0;
 }
-
-
- 
