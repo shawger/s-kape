@@ -2,7 +2,7 @@
 <div class ="post-form">
 <blockquote id="msg"></blockquote></div>
 <form class="form-horizontal post-form" role="form">
-    
+
     <div class="post-info-edit col-sm-12"">
         <div class="form-group col-sm-4">
                 <input type="text" class="form-control" id="name" value="{{ post.name }}" placeholder="Name">
@@ -20,21 +20,29 @@
                 <input type="text" class="form-control" id="color" value="{{ post.color }}" placeholder="Color">
         </div>
         <div class="form-group col-sm-3">
-                <input type="text" class="form-control" id="location" value="{{ post.location }}"" placeholder="Location">
+                <input type="text" class="form-control" id="location" value="{{ post.location }}" placeholder="Location">
         </div>
         <div class="form-group col-sm-3">
                 <input type="text" class="form-control" id="activity" value="{{ post.activity }}" placeholder="Activity">
+        </div>
+        <div class="form-group col-sm-12">
+                <input type="text" class="form-control" id="tags" value="{{ post.tags }}" placeholder="Tags">
         </div>
 
         <div class="form-group col-sm-12">
                 <textarea class="form-control post-content-edit" rows="1" id="comment" placeholder="Comment">{{ post.comment }}</textarea>
         </div>
+
+        <label class="checkbox-inline"><input type="checkbox" value="" id="hide-header" {{hideHeader}}>Hide Header</label>
+        <label class="checkbox-inline"><input type="checkbox" value="" id="hide-title" {{hideTitle}}>Hide Title</label>
     </div>
-    
+
+    <h2> Content </h2>
+
     <div class="col-sm-12">
         <textarea class="form-control post-content-edit"  id="content" placeholder="Write some stuff">{{ post.content }}</textarea>
     </div>
-    
+
 </form>
 </div>
 

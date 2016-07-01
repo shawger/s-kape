@@ -8,6 +8,33 @@
 @import url(http://fonts.googleapis.com/css?family=Molengo);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans);
 
+#notebook-container{
+  max-width:900px;
+  padding: 0px;
+}
+
+.output_png img {
+  max-width:100%;
+  padding: 15px;
+}
+
+.rendered {
+  width:100%;
+  padding: 0px;
+}
+
+.input {
+  padding: 15px;
+}
+
+.output {
+  padding: 15px;
+}
+
+.anchor-link {
+  display: none;
+}
+
 .grey-background {
     width: 100%;
     background-color: #f5f5f5;
@@ -16,7 +43,7 @@
     margin-top: 50px;
     margin-bottom: 50px;
     overflow:auto;
-    
+
 }
 
 .cards {
@@ -244,32 +271,30 @@ Post settings
 }
 
 .post p{
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
     max-width:900px;
     margin: auto;
     padding-bottom: 15px;
 }
 
 .post ol{
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-left: 55px;
     max-width:900px;
     margin: auto;
     padding-bottom: 15px;
 }
 
 .post ul{
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-left: 55px;
     max-width:900px;
     margin: auto;
     padding-bottom: 15px;
 }
 
 .post blockquote{
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 15px;
+    padding-left: 15px;
     max-width:900px;
     margin: auto;
     padding-bottom: 15px;
@@ -577,22 +602,28 @@ h1 {
 }
 
 .post h1 {
-    padding-right: 30px;
-    padding-left: 30px;
-    margin-bottom: 50px;
-    margin-top: 50px;
+    padding-right: 15px;
+    padding-left: 15px;
     text-align: center;
+    max-width: 900px;
+    margin: auto;
+    margin-bottom: 50px;
+    margin-top: 20px;
 }
 
 h2 {
     font-family: 'Molengo';
     font-weight: 700;
     font-size: 34px;
-    margin-top: 50px;
-    margin-bottom: 10px;
-    padding-right: 30px;
-    padding-left: 30px;
-    text-align: center;
+    text-align: left;
+    border-bottom: solid;
+    max-width: 900px;
+
+    margin: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 30px;
+    margin-bottom: 30px;
 }
 
 .post-pic h2 {
@@ -603,20 +634,31 @@ h3 {
     font-family: 'Molengo';
     font-weight: 600;
     font-size: 28px;
-    padding-right: 30px;
-    padding-left: 30px;
-    text-align: center;
-    margin-top: 40px;
-    margin-bottom: 10px;
+    text-align: left;
+    border-bottom: solid;
+    border-bottom-width: thin;
+    max-width: 900px;
+
+    margin: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 30px;
+    margin-bottom: 30px;
+
 }
 
 h4 {
     font-family: 'Molengo';
     font-weight: 500;
     font-size: 26px;
-    padding-right: 30px;
-    padding-left: 30px;
-    text-align: center;
+    text-align: left;
+    max-width: 900px;
+
+    margin: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    padding-top: 30px;
+    margin-bottom: 30px;
 }
 /* Special options for big screen. Only use if nessessary */
 @media screen and (min-width: 1000px) {
