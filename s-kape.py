@@ -47,7 +47,7 @@ class MainPage(webapp2.RequestHandler):
             page.img = pics.getPicURL(p.pic,"normal")
             page.url = "www.s-kape.com"
 
-            page.write(p.title,p.html)
+            page.write(p.title,p.render())
 
 class AboutPage(webapp2.RequestHandler):
     def get(self):
@@ -79,7 +79,7 @@ class AboutPage(webapp2.RequestHandler):
             page.url = "www.s-kape.com/about"
             page.pageType = "about"
 
-            page.write(p.title,p.html)
+            page.write(p.title,p.render())
 
 class ResumePage(webapp2.RequestHandler):
     def get(self):

@@ -539,10 +539,10 @@ class Update(webapp2.RequestHandler):
         title = ""
 
         if(not updatePost.hideTitle):
-            title = updatePost.title
+            title = '<h1>' + updatePost.title  + '</h1>'
 
         templateValues = {
-            'title': title,
+            'title':  title,
             'htmlContent': updatePost.htmlContent,
         }
 

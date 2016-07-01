@@ -607,7 +607,7 @@ h1 {
     text-align: center;
     max-width: 900px;
     margin: auto;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
     margin-top: 20px;
 }
 
@@ -687,19 +687,23 @@ h4 {
     }
 
     .post p {
-        padding: 5px;
+        padding: 10px;
     }
 
     .post h1 {
-        padding: 0px;
+        padding: 10px;
     }
 
     .post h2 {
-        padding: 0px;
+        padding: 10px;
     }
 
     .post h3 {
-        padding: 0px;
+        padding: 10px;
+    }
+
+    .post h4 {
+        padding: 10px;
     }
 
     .nav-bar-title-text {
