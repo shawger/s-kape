@@ -119,5 +119,5 @@ blockquote {
 }
 
 .grey-background {
-    background-color: {{color.lightest}};
+    background-color: {{ transparent }} ;
 }

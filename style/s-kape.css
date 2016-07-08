@@ -647,6 +647,11 @@ h3 {
 
 }
 
+h3 em {
+  font-weight: 500;
+  font-size: 26px;
+}
+
 h4 {
     font-family: 'Molengo';
     font-weight: 500;
