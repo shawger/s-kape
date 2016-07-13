@@ -23,12 +23,14 @@
   padding: 0px;
 }
 
-.input {
+pre {
   padding: 15px;
+  margin: 15px;
 }
 
-.output {
-  padding: 15px;
+.input_prompt{
+  padding-left: 15px;
+  padding-right: 15px;
 }
 
 .anchor-link {

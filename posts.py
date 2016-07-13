@@ -116,7 +116,7 @@ class Post(ndb.Model):
         html = re.sub(ur'{cards\s([A-Za-z0-9\-\:\,]*)}',_cardHTML,html)
 
         #emded html from another site
-        html = re.sub(ur'{embed\s([A-Za-z0-9\-\/\.\:]*)}',_embedHTML,html)
+        html = re.sub(ur'{embed\s([A-Za-z0-9\-\/\.\:\%]*)}',_embedHTML,html)
 
 
         return html
