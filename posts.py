@@ -62,14 +62,17 @@ class Post(ndb.Model):
     location = ndb.StringProperty()         #location of post
     activity = ndb.StringProperty()         #activity of post
     tags = ndb.StringProperty()             #tags of a post (comma seperated)
+    relatedPosts = ndb.StringProperty()     #related posts (comma seperated)
     comment = ndb.StringProperty()          #post comment
     content = ndb.TextProperty()            #content of post. this will be in markdown
     htmlContent = ndb.TextProperty()        #content of post in HTML
     html = ndb.TextProperty()               #html of entire post (includes pics and header)
     text = ndb.TextProperty()               #text version of post
     publish = ndb.BooleanProperty()         #Whether or not the post is published
-    hideHeader = ndb.BooleanProperty()        #Whether or not to display a header
-    hideTitle = ndb.BooleanProperty()         #Whether or not to display a title
+    hideHeader = ndb.BooleanProperty()      #Whether or not to display a header
+    hideTitle = ndb.BooleanProperty()       #Whether or not to display a title
+    hideFooter = ndb.BooleanProperty()      #Whether or not to display a footer
+    hideRelated = ndb.BooleanProperty()     #Whether or not to display a related cards
 
     def toTxt(self):
         """ Converts a post into raw text for backup purposes"""
@@ -113,7 +116,9 @@ class Post(ndb.Model):
         #cards can be included in the post.
         #the format is {cards <card name>}
         #use regex to find matches and replace them with the proper html
-        html = re.sub(ur'{cards\s([A-Za-z0-9\-\:\,]*)}',_cardHTML,html)
+        html = re.sub(ur'{cards\s([A-Za-z0-9\-\:\,\s]*)}',_cardHTML,html)
+
+        html = re.sub(ur'{cards-grey\s([A-Za-z0-9\-\:\,\s]*)}',_cardHTMLGrey,html)
 
         #emded html from another site
         html = re.sub(ur'{embed\s([A-Za-z0-9\-\/\.\:\%]*)}',_embedHTML,html)
@@ -210,7 +215,15 @@ class View(webapp2.RequestHandler):
             page.setHeader(p.title,subheadings,p.pic)
 
         #Write the content of the post to the page
-        page.write(p.title,p.render())
+
+        pageHtml = p.render()
+
+        if(not p.hideRelated and p.relatedPosts != None and p.relatedPosts != ""):
+
+            relatedPostsArray = p.relatedPosts.split(',')
+            pageHtml += cards.getCardCollection(relatedPostsArray,cardType='post',heading='Related Posts',greyBack=True)
+
+        page.write(p.title,pageHtml)
 
 #Dislpays plain text of post
 class Text(webapp2.RequestHandler):
@@ -241,12 +254,35 @@ class Text(webapp2.RequestHandler):
 class PostList(webapp2.RequestHandler):
     def get(self):
 
+        #Check if the url is valid. If not print an error message
+        url = urlparse(self.request.url)
+
+        if(url.path != "/posts"  and url.path != "/posts/"):
+
+            errorPage = utils.ServePage(self)
+
+            errorPage.title = "s-kape | post not found"
+            errorPage.description = "s-kape.com post not found"
+            errorPage.setColor("red")
+            errorPage.img = ""
+            errorPage.pageType = "post"
+
+            errorPage.write("Posts","Post not found " + url.path)
+            return
+
         #Get the template file
         template = JINJA_ENVIRONMENT.get_template('html/cards.html')
+
+        #If there is a ? after then url, then do a query (/posts?<query>)
+        query = ""
+
+        if  url.query != None or url.query != "":
+            query = url.query
 
         #Complete the template. Fill in the query type
         templateValues = {
             'queryType': "post",
+            'defualtQuery': query,
         }
 
         #Render template
@@ -289,6 +325,7 @@ class AddForm(webapp2.RequestHandler):
             activity = "",
             comment = "",
             content = "",
+            relatedPosts = "",
             publish = False
         )
 
@@ -339,7 +376,7 @@ class UpdateForm(webapp2.RequestHandler):
             page.write("Error","Page not found")
             return
 
-        #Set up wether the header and title hide tick boxes
+        #Set up wether the header, title and footer hide tick boxes
         #should be ticked
 
         hideHeader = ''
@@ -350,11 +387,21 @@ class UpdateForm(webapp2.RequestHandler):
         if(p.hideTitle):
             hideTitle = 'checked'
 
+        hideFooter = ''
+        if(p.hideFooter):
+            hideFooter = 'checked'
+
+        hideRelated = ''
+        if(p.hideRelated):
+            hideRelated = 'checked'
+
         #Setup navigation template varibles
         templateValues = {
             'post': p,
             'hideHeader': hideHeader,
             'hideTitle': hideTitle,
+            'hideFooter': hideFooter,
+            'hideRelated': hideRelated
         }
 
         #Load navigation template
@@ -446,12 +493,15 @@ class Update(webapp2.RequestHandler):
         color = self.request.get('color').strip()
         location = self.request.get('location').strip()
         activity = self.request.get('activity').strip()
-        tags = self.request.get('tags').strip()
+        tags = str.replace(str(self.request.get('tags').strip()), " ", "")
+        relatedPosts = str.replace(str(self.request.get('relatedPosts').strip()), " ", "")
         comment = self.request.get('comment').strip()
         content = self.request.get('content').strip()
         add = self.request.get('add').strip()
         hideHeaderString = self.request.get('hideHeader').strip()
         hideTitleString = self.request.get('hideTitle').strip()
+        hideFooterString = self.request.get('hideFooter').strip()
+        hideRelatedString = self.request.get('hideRelated').strip()
 
         #first check if the name is valid
         regex = re.compile(ur'^[A-Za-z0-9\-]+$')
@@ -481,6 +531,18 @@ class Update(webapp2.RequestHandler):
         hideTitle = False
         if(hideTitleString == 'true'):
             hideTitle = True
+
+        #If the hideFooter from the form is true, then set the hideFooter to
+        #bool True
+        hideFooter = False
+        if(hideFooterString == 'true'):
+            hideFooter = True
+
+        #If the hideFooter from the form is true, then set the hideFooter to
+        #bool True
+        hideRelated = False
+        if(hideRelatedString == 'true'):
+            hideRelated = True
 
         #Check if this is an addtion or modification.
         #add will be 'yes' if it is an addition
@@ -527,12 +589,15 @@ class Update(webapp2.RequestHandler):
                            location = location,
                            activity = activity,
                            tags = tags,
+                           relatedPosts = relatedPosts,
                            comment = comment,
                            content = content,
                            htmlContent = html,
                            publish = publish,
                            hideHeader = hideHeader,
-                           hideTitle = hideTitle)
+                           hideTitle = hideTitle,
+                           hideFooter = hideFooter,
+                           hideRelated = hideRelated,)
 
         #set template values with post to be updated
 
@@ -541,9 +606,28 @@ class Update(webapp2.RequestHandler):
         if(not updatePost.hideTitle):
             title = '<h1>' + updatePost.title  + '</h1>'
 
+        #Set the tag values. Each will be links with # before them
+        tagString = ""
+        if updatePost.tags != "":
+            tagArray = updatePost.tags.split(",")
+
+            tagLinks = []
+            for tag in tagArray:
+                tagLinks.append('<a href="/posts?tags=' + tag + '">#' + tag + '</a>')
+
+            tagString =  " ".join(tagLinks)
+
+        #Code for hiding the footer using embedded style
+        hideFooterStyle = ""
+
+        if updatePost.hideFooter:
+            hideFooterStyle = 'display: none'
+
         templateValues = {
             'title':  title,
             'htmlContent': updatePost.htmlContent,
+            'tags': tagString,
+            'hideFooterStyle': hideFooterStyle
         }
 
         #get the template file
@@ -824,41 +908,45 @@ def _cardHTML(match):
 
     #See if cards exists
     cardsString = str(match.group(1))
+    return _cardHTMLChooseBack(cardsString,False)
 
+def _cardHTMLGrey(match):
+
+    #See if cards exists
+    cardsString = str(match.group(1))
+    return _cardHTMLChooseBack(cardsString,True)
+
+
+
+def _cardHTMLChooseBack(cardsString,greyBack):
+
+    title = ""
+    cardCollection = []
     # latest-posts is a special keyword that will return post cards in order of date
     if (cardsString == "latest-posts"):
 
         #The blank query to findCards will order the posts automatically
-        cardsString = findCards("")
+        cardCollection = findCards("").split(",")
+        title = "Lastest Posts"
 
     # latest-pics is a special keyword that will return pic cards in order of date
-    if (cardsString == "latest-pics"):
+    elif (cardsString == "latest-pics"):
 
         #The blank query to findCards will order the pics automatically
-        cardsString = pics.findCards("")
+        cardCollection = pics.findCards("").split(",")
+        title = "Lastest Pics"
 
-    cardCollection = []
+    elif (',' in cardsString):
 
-    cardCollection = cardsString.split(",")
+        cardsStringArray = cardsString.split(",")
+        title = cardsStringArray[0]
+        cardCollection = cardsStringArray[1:]
 
-    #1 or 0 cards to load
-    if(len(cardCollection) < 1):
-        cardCollection.append(cardsString)
+    if greyBack:
+        return cards.getCardCollection(cardCollection,heading=title,greyBack=True)
+    else:
+        return cards.getCardCollection(cardCollection,heading=title)
 
-    #Make some html
-    returnString = "<div class='row cards-imbed'>"
-
-    #Only return 3 cards
-    i = 0
-    for card in cardCollection:
-        if(i < 3):
-            returnString = returnString + cards.getCard(card,"")
-
-        i = i + 1
-
-    returnString = returnString + "</div>"
-
-    return returnString
 
 def _embedHTML(match):
 

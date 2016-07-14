@@ -17,8 +17,11 @@ $( "#post-submit" ).click(function() {
   tags = $( "#tags" ).val();
   comment = $( "#comment" ).val();
   content = $( "#content" ).val();
+  relatedPosts = $( "#relatedPosts" ).val();
   hideHeader = 'false';
   hideTitle = 'false';
+  hideFooter = 'false';
+  hideRelated = 'false';
 
   if($( "#hide-header" ).is(":checked")){
     hideHeader = 'true'
@@ -26,6 +29,14 @@ $( "#post-submit" ).click(function() {
 
   if($( "#hide-title" ).is(":checked")){
     hideTitle = 'true'
+  }
+
+  if($( "#hide-footer" ).is(":checked")){
+    hideFooter = 'true'
+  }
+
+  if($( "#hide-related" ).is(":checked")){
+    hideRelated = 'true'
   }
 
   add = "no";
@@ -45,8 +56,11 @@ $( "#post-submit" ).click(function() {
                                   comment: comment,
                                   content: content,
                                   add: add,
+                                  relatedPosts: relatedPosts,
                                   hideHeader: hideHeader,
-                                  hideTitle: hideTitle} ).done(function(data){
+                                  hideTitle: hideTitle,
+                                  hideFooter: hideFooter,
+                                  hideRelated: hideRelated} ).done(function(data){
 
         if (window.location.href.indexOf("admin/post-add") >= 0){
 

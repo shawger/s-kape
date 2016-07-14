@@ -120,6 +120,7 @@ class ResumePage(webapp2.RequestHandler):
 app = webapp2.WSGIApplication([('/', MainPage),
                                ('/about', AboutPage),
                                ('/resume', ResumePage),
+                               ('/nick-shaw', ResumePage),
                                ('/posts', posts.PostList),
                                ('/posts/', posts.PostList),
                                ('/posts/.*.txt', posts.Text),

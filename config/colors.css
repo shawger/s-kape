@@ -5,7 +5,7 @@
 
 .navbar-fixed-top {
     background-color: {{ color.base }};
-    border-bottom-color: {{ color.darker }};
+    border-bottom-color: {{ color.base }};
 }
 
 .navbar-nav .active {
@@ -67,8 +67,8 @@
     background-color: {{ color.lightest }};
 }
 
-.start h1 {
-    color: white;
+hr{
+  color: {{ color.base }};
 }
 
 h1 {

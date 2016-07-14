@@ -42,8 +42,6 @@ pre {
     background-color: #f5f5f5;
     padding-top:5px;
     padding-bottom:5px;
-    margin-top: 50px;
-    margin-bottom: 50px;
     overflow:auto;
 
 }
@@ -63,6 +61,11 @@ pre {
     padding-top: 50px;
     padding-bottom: 50px;
     margin: 0;
+}
+
+.cards-imbed h2{
+  text-align: center;
+  border-bottom-width: 0px;
 }
 
 .card {
@@ -112,8 +115,8 @@ pre {
     position: absolute;
     padding:10px;
     right: 0;
-    top: 70%;
-    height:30%;
+    bottom: 0;
+
     width:100%;
     color:black;
     text-align: center;
@@ -124,6 +127,7 @@ pre {
  .card:hover .card-content{
      color: white;
  }
+
 
  .card-col{
      padding:10px;
@@ -311,6 +315,14 @@ Post settings
     font-family: 'Molengo';
 }
 
+.post-footer{
+  padding-right: 15px;
+  padding-left: 15px;
+  min-height: 50px;
+  max-width:900px;
+  margin: auto;
+}
+
 /* ############
 Navbar settings
    ############*/
@@ -318,12 +330,11 @@ Navbar settings
 .navbar {
     font-family: 'Molengo';
     font-weight: 500;
-	font-size: 30px;
+	   font-size: 30px;
     margin-bottom: 5px;
     /*box-shadow: rgba(25, 25, 25, 0.75) 0px 5px 25px;*/
-    border-bottom-width: 3px;
-    border-bottom-style: solid;
-    border-bottom-color: black;
+    border-bottom-width: 0px;
+    height: 51px;
 }
 
 .navbar-default .navbar-brand {
@@ -414,11 +425,11 @@ button .navbar-toggle .collapased{
 }
 
 .navbar-nav .active {
-    border-bottom: 3px solid black;
+    border-bottom: 5px solid black;
 }
 
 .nav > li:hover{
-    border-bottom: 3px solid black;
+    border-bottom: 5px solid black;
 }
 
 /* ############
@@ -594,6 +605,11 @@ input {
 
 .ui-loader {
     display: none;
+}
+
+hr{
+  border-bottom: solid;
+  border-bottom-width: thick;
 }
 
 h1 {
