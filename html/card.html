@@ -7,9 +7,6 @@
                 background: linear-gradient({{ colorOverlayDark }},{{ colorOverlayDark }}),url("{{ picURL }}");
                 background-size: cover;
         }
-        #{{name}}.card .card-content{
-                background-color: "white";
-        }
         #{{name}}.card{
                 border-bottom-color: {{ color }};
         }
@@ -20,11 +17,12 @@
         <a style="display:block" {{ url }}>
         <div class="card {{cardClass}}" id ="{{ name }}">
                 <div class='card-pic'>
+                  <div class='card-content'>
                         <div class='card-title'>{{ title }}</div>
+                        <div class='card-info'>{{ info }}</div>
+                  </div>
                 </div>
-                <div class='card-content'>
-                        {{ info }}
-                </div>
+
                 <div class="admin">
                         {{ admin }}
                 </div>

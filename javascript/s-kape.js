@@ -11,20 +11,20 @@ currentWidth = $( window ).width();
 $(".ftLarge").fitText(0.9, { minFontSize: '28px', maxFontSize: '120px' });
 $(".ftSmall").fitText(1.8, { minFontSize: '16px', maxFontSize: '30px' });
 $(".card-title").fitText(0.7, { minFontSize: '20px', maxFontSize: '150px' });
-$(".card-content").fitText(1.8, { minFontSize: '14px', maxFontSize: '28px' });
+$(".card-info").fitText(1.8, { minFontSize: '18px', maxFontSize: '28px' });
 
 
 $(window).scroll(function() {
-    
+
     if($( window ).width() > 767){
         $(".navbar-text").show();
     }
 });
 
 function deferImageLoader() {
-    
+
     $('#header').css("background","url=https://storage.googleapis.com/s-kape/pics/kia.jpg")
-    
+
     var imgDefer = document.getElementsByClassName('inline-img');
     for (var i=0; i<imgDefer.length; i++) {
         getPic(imgDefer[i].getAttribute('id'),"inline-img");
@@ -38,23 +38,23 @@ $("#scroll").click(function() {
 });
 
 function getPic(picName, picType){
-    
+
     //Defualt max width
     var maxWidth = 1000;
-    
+
     var screenWidth = $( window ).width();
-    
+
     //Determine the size of the picture to grab
     if(picType == "full"){
         maxWidth = screenWidth;
     }
-    
+
     if(picType == "header"){
         maxWidth = screenWidth;
     }
-    
+
     if(picType == "inline-img"){
-        
+
         if(screenWidth >= 800){
             maxWidth = 800;
         }
@@ -62,9 +62,9 @@ function getPic(picName, picType){
             maxWidth = screenWidth;
         }
     }
-    
+
     if(picType == "card"){
-        
+
         if(screenWidth >= 1000){
             maxWidth = 333;
         }
@@ -74,11 +74,11 @@ function getPic(picName, picType){
         else{
             maxWidth = screenWidth;
         }
-        
+
     }
-    
+
     var picSize = "normal";
-    
+
     //from the picture size, request the correct size.
     if(maxWidth>1920){
         picSize = "xLarge"
@@ -92,19 +92,19 @@ function getPic(picName, picType){
     else{
         picSize = "small";
     }
-    
+
     $.post("/pics-url", {name: picName,size: picSize}, function(result){
         var url = result;
         $("."+ picType + "#" + picName ).attr("src", result);
     });
-    
+
     var screenWidth = $(this).attr('src');
-    
+
 }
 
 function picModal(){
     var picName = $(this).attr('id');
-    
+
     if(!detectIE()){
         showPicModal(picName);
     }
@@ -114,11 +114,11 @@ function closeModal(){
     $('#picModal').modal('hide')
 }
 function showPicModal(picName){
-    
+
     var screenWidth = $( window ).width();
-    
+
     var picSize = "normal";
-    
+
     //from the picture size, request the correct size.
     if(screenWidth>1920){
         picSize = "xLarge"
@@ -132,28 +132,28 @@ function showPicModal(picName){
     else{
         picSize = "small";
     }
-    
-    
+
+
     $.post("/pics-modal", {name: picName,size: picSize}, function(result){
         var modal = result;
         $(".modal" ).html(modal);
         modalLeftAndRight(picName);
         setModalMaxWidth();
-    
+
     });
-    
-    
+
+
     $('#picModal').modal('show');
 }
 
 function modalLeftAndRight(picName){
-    
+
     if($('#results').length && $('#results').html() != "" ){
         var picList = $('#results').html();
         var pics = picList.split(",");
-        
+
         var picIndex = pics.indexOf("pic:"+picName);
-        
+
         if(picIndex < 1){
             $('.modal-left').hide();
         }
@@ -176,20 +176,20 @@ function modalLeftAndRight(picName){
         $('.modal-right').hide();
         $('.modal-left').hide();
     }
-    
+
 }
-    
+
 
 
 //Set max width of the modal according to picture in the modal
 function setModalMaxWidth() {
-    
+
     //the images are 4:3
     var headerHeight  = $('.modal-header').outerHeight() || 0;
     var footerHeight  = $('.modal-footer').outerHeight() || 0;
     var picHeight = $('.modal-image').outerHeight() || 0;
     var picWidth = $('.modal-image').outerWidth() || 0;
-    
+
     //asume 4/3
     var ration = 1;
     if(picHeight == 0 || picWidth == 0){
@@ -198,19 +198,19 @@ function setModalMaxWidth() {
     else{
         ratio = picWidth/picHeight;
     }
-    
-    
-    
+
+
+
     var maxImgHeight = $( window ).height() - headerHeight - footerHeight - 70;
-    
-    
+
+
     var maxWidth = Math.floor(maxImgHeight * ratio);
-    
+
      $('.modal-dialog').css({
         'max-width': maxWidth
      });
-     
-    
+
+
 }
 
 //Things to do when the windows changes
@@ -218,16 +218,16 @@ $(window).resize(function() {
   if ($('.modal.in').length != 0) {
     setModalMaxWidth();
   }
-  
+
   //Check if the screen grows
   if(currentWidth < $( window ).width()){
-      
+
       //If the screen goes over 400, then we probably need to reload images
       if($( window ).width() > 400){
           deferImageLoader();
       }
   }
-  
+
   currentWidth = $( window ).width();
 });
 
@@ -242,13 +242,13 @@ function detectIE() {
 
   // IE 10
   // ua = 'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)';
-  
+
   // IE 11
   // ua = 'Mozilla/5.0 (Windows NT 6.3; Trident/7.0; rv:11.0) like Gecko';
-  
+
   // Edge 12 (Spartan)
   // ua = 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36 Edge/12.0';
-  
+
   // Edge 13
   // ua = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2486.0 Safari/537.36 Edge/13.10586';
 
@@ -282,7 +282,7 @@ $("#search-toggle").click(function(){
     else {
         $(".search-box").css("display", "none");
     }
-    
+
     $("#navbar").removeClass('in');
     $("#navbar").addClass('out');
 });

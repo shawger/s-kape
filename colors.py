@@ -26,7 +26,7 @@ class Color(ndb.Model):
     r = ndb.StringProperty()
     b = ndb.StringProperty()
     g = ndb.StringProperty()
-    css = ndb.StringProperty()
+    css = ndb.TextProperty() 
 
     def transparent(self,opacity):
         return "rgba(" + self.r + "," + self.g + "," + self.b + "," + opacity + ")"
